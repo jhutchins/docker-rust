@@ -2,6 +2,7 @@ FROM rust:1.62
 RUN apt-get update \
     && apt-get install -y \
         build-essential \
+        cmake \
         curl \
         libgtk-3-dev \
         libssl-dev \
