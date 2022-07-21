@@ -10,7 +10,8 @@ RUN apt-get update \
         libwebkit2gtk-4.0-dev \
         libayatana-appindicator3-dev \
         wget \
-    && rustup component add clippy llvm-tools-preview \
+        xmlstarlet \
+    && rustup component add clippy llvm-tools-preview rustfmt \
     && cargo install grcov \
     && curl -O https://gitlab.com/dlalic/rust-cobertura-xslt/-/raw/main/transform.xslt \
     && rm -rf /var/lib/apt/lists/*
