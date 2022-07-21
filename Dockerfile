@@ -4,6 +4,7 @@ RUN apt-get update \
         build-essential \
         cmake \
         curl \
+        lcov \
         libgtk-3-dev \
         libssl-dev \
         librsvg2-dev \
