@@ -22,11 +22,15 @@ RUN apt-get update \
     && cargo install grcov \
     && cargo install junit-test \
     && rm -rf /var/lib/apt/lists/*
-COPY MacOSX12.3.sdk.tar.xz osxcross/tarballs/
+COPY MacOSX12.3.sdk.tar.xz tarballs/
 RUN git clone https://github.com/tpoechtrager/osxcross.git --depth 1 \
+  && mv tarballs/* /osxcross/tarballs \
   && TARGET_DIR=/usr/local/osxcross UNATTENDED=1 ./osxcross/build.sh \
   && rm -rf osxcross \
   && wget https://dl.google.com/android/repository/android-ndk-r25b-linux.zip \
   && unzip android-ndk-r25b-linux.zip \
   && rm -rf android-ndk-r25b-linux.zip
 ENV PATH $PATH:/usr/local/osxcross/bin/
+RUN apt-get update \
+    && apt-get install -y protobuf-compiler \
+    && rm -rf /var/lib/apt/lists/*
