@@ -32,5 +32,6 @@ RUN git clone https://github.com/tpoechtrager/osxcross.git --depth 1 \
   && rm -rf android-ndk-r25b-linux.zip
 ENV PATH $PATH:/usr/local/osxcross/bin/
 RUN apt-get update \
-    && apt-get install -y protobuf-compiler \
+    && apt-get install -y \
+    protobuf-compiler \
     && rm -rf /var/lib/apt/lists/*
